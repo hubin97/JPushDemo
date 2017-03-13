@@ -1,5 +1,5 @@
-# JPushDemo
-JPush+iOS 10新特性(简易图文推送)
+#JPushDemo 
+**JPush+iOS 10新特性(简易图文推送)**
 前言
      如果仅仅是为了实现推送这一功能,选择可能会有很多; 但是使用三方框架肯定是非常快捷方便的.本文以极光推送的集成为例.
      若要实现简易图文推送,只需使用iOS10新特性服务扩展即可( UNNotificationServiceExtension);
@@ -18,7 +18,8 @@ JPush+iOS 10新特性(简易图文推送)
           将第2步下载的aps证书(开发/发布),添加到钥匙串; 然后重新导出为.p12文件.接着上传推送证书生成的p12文件至极光推送服务控制台
           注意:命名最好使用全英文,避免不必要的问题
      4.代码集成,项目配置
-      (1)添加Framework
+####(1)添加Framework
+```obj-c
 1. CFNetwork.framework
 2. CoreFoundation.framework
 3. CoreTelephony.framework
@@ -31,21 +32,24 @@ JPush+iOS 10新特性(简易图文推送)
 10. AdSupport.framework (获取IDFA需要；如果不使用IDFA，请不要添加)
 11. UserNotifications.framework (Xcode8及以上)
 12. libresolv.tbd (JPush 2.2.0及以上版本需要, Xcode7以下版本是libresolv.dylib)
-     (2)项目配置
+```
+####(2)项目配置
     Build Settings
     如果你的工程需要支持小于7.0的iOS系统，请到Build Settings 关闭 bitCode 选项，否则将无法正常编译通过。
     Capabilities
     如使用Xcode8及以上环境开发，请开启Application Target的
     Capabilities->Push Notifications选项,并确认Steps全部勾上
     Capabilities->Background Modes选中Remote notification
-     (3)AppDelegate代码段
+
+####(3)AppDelegate代码段
+```obj-c
 // 引入JPush功能所需头文件
 #import "JPUSHService.h"
 // iOS10注册APNs所需头文件
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #endif
-添加代理 <JPUSHRegisterDelegate>
+//添加代理 <JPUSHRegisterDelegate>
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
 {
@@ -118,12 +122,12 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     [JPUSHService handleRemoteNotification:userInfo];
 }
 #pragma mark ---------------
-
+```
 
      5.配置极光平台推送内容
           推送内容务必填充body内容(否则无法收到推送), 目标平台（必选）
 
-二: 新特性扩展推送图片  
+#二: 新特性扩展推送图片  
      1. 在项目Target添加Notification Service Extension项; 命名为 NotificationService,
 接着会自动生成NotificationService项目文件夹
 
