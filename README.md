@@ -43,7 +43,7 @@
 ####(2)项目配置
 Build Settings
 
-     如果你的工程需要支持小于7.0的iOS系统，请到Build Settings 关闭 bitCode 选项，否则将无法正常编译通过。
+    如果你的工程需要支持小于7.0的iOS系统，请到Build Settings 关闭 bitCode 选项，否则将无法正常编译通过。
 Capabilities
 
     如使用Xcode8及以上环境开发，请开启Application Target的
@@ -139,49 +139,45 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
 ##二: 新特性扩展推送图片  
 ###1. 在项目Target添加Notification Service Extension项; 命名为 NotificationService,
 接着会自动生成NotificationService项目文件夹
+<img src="https://github.com/hubin97/JPushDemo/blob/master/JPushDemo/01.PNG" width=800 />
 
 UNNotificationServiceExtension 主要包含两个方法
 ```obj-c
-     // You are expected to override this method to implement push notification modification.
-     //补充: 你需要通过重写这个方法，来重写你的通知内容，也可以在这里下载附件内容
-     - (void)didReceiveNotificationRequest:(UNNotificationRequest *)request withContentHandler:(void (^)(UNNotificationContent *contentToDeliver))contentHandler;
+// You are expected to override this method to implement push notification modification.
+//补充: 你需要通过重写这个方法，来重写你的通知内容，也可以在这里下载附件内容
+- (void)didReceiveNotificationRequest:(UNNotificationRequest *)request withContentHandler:(void (^)(UNNotificationContent *contentToDeliver))contentHandler;
 
-     // Will be called just before this extension is terminated by the system. You may choose whether to override this method.
-     //补充: 如果处理时间太长，等不及处理了，就会把收到的apns直接展示出来
-     - (void)serviceExtensionTimeWillExpire;
+// Will be called just before this extension is terminated by the system. You may choose whether to override this method.
+//补充: 如果处理时间太长，等不及处理了，就会把收到的apns直接展示出来
+- (void)serviceExtensionTimeWillExpire;
 ```
 ###2.项目配置注意:
 App与Extension target编译时需统一编译模式,同时debug,或者同时release
 
     DEBUG模式, Extension code和App General全选Automatically manage signing ;  BuildSettings 全选iOS Developer,  Automatic
+    
     RELEASE模式,Extension和App 全部选定release并统一证书,根据不同Bundle Identifier配置不同配置文件
 ###3.code部分
 didReceiveNotificationRequest方法做修改
 ```obj-c
-    NSDictionary *dict =  self.bestAttemptContent.userInfo;
-    NSString *imgUrl = [NSString stringWithFormat:@"%@",dict[@"imageAbsoluteString"]];
-    if (!imgUrl.length) {
-        self.contentHandler(self.bestAttemptContent);
-    }
-    [self loadAttachmentForUrlString:imgUrl withType:@"png" completionHandle:^(UNNotificationAttachment *attach) {
-        if (attach) {
-            self.bestAttemptContent.attachments = [NSArray arrayWithObject:attach];
-        }
-        self.contentHandler(self.bestAttemptContent);
-    }];
+NSDictionary *dict =  self.bestAttemptContent.userInfo;
+NSString *imgUrl = [NSString stringWithFormat:@"%@",dict[@"imageAbsoluteString"]];
+if (!imgUrl.length) {
+     self.contentHandler(self.bestAttemptContent);
+ }
+[self loadAttachmentForUrlString:imgUrl withType:@"png" completionHandle:^(UNNotificationAttachment *attach) {
+     if (attach) {
+          self.bestAttemptContent.attachments = [NSArray arrayWithObject:attach];
+     }
+     self.contentHandler(self.bestAttemptContent);
+}];
 ```
 ###4.JPush控制台配置 
+<img src="https://github.com/hubin97/JPushDemo/blob/master/JPushDemo/02.PNG" width=800 />
 
       
-##三: 自定义推送内容与格式 (不是很稳定,待续)
-##四: 回顾总结
-
-
-
-
-
-======
-##备注
+##三: 备注
 JPush推送推送字串格式:
+<img src="https://github.com/hubin97/JPushDemo/blob/master/JPushDemo/03.PNG" width=800 />
 
 ======
