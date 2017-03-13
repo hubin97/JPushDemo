@@ -31,6 +31,9 @@
 		04667D971E5156360061EA7E /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 04667D961E5156360061EA7E /* libresolv.tbd */; };
 		0493294D1E51B5A4003A362B /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0493294C1E51B5A4003A362B /* NotificationService.m */; };
 		049329511E51B5A4003A362B /* NotificationService.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 049329491E51B5A4003A362B /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		1FF0D30A1E763C3900C5BB70 /* 01.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FF0D3071E763C3900C5BB70 /* 01.PNG */; };
+		1FF0D30B1E763C3900C5BB70 /* 03.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FF0D3081E763C3900C5BB70 /* 03.PNG */; };
+		1FF0D30C1E763C3900C5BB70 /* 02.PNG in Resources */ = {isa = PBXBuildFile; fileRef = 1FF0D3091E763C3900C5BB70 /* 02.PNG */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +112,9 @@
 		0493294C1E51B5A4003A362B /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
 		0493294E1E51B5A4003A362B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0493295B1E51C446003A362B /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		1FF0D3071E763C3900C5BB70 /* 01.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 01.PNG; sourceTree = "<group>"; };
+		1FF0D3081E763C3900C5BB70 /* 03.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 03.PNG; sourceTree = "<group>"; };
+		1FF0D3091E763C3900C5BB70 /* 02.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 02.PNG; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +207,7 @@
 		04667D461E51516E0061EA7E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1FF0D3061E763C0700C5BB70 /* GithubImage */,
 				04667D471E51516E0061EA7E /* main.m */,
 			);
 			name = "Supporting Files";
@@ -262,6 +269,16 @@
 				0493294E1E51B5A4003A362B /* Info.plist */,
 			);
 			path = NotificationService;
+			sourceTree = "<group>";
+		};
+		1FF0D3061E763C0700C5BB70 /* GithubImage */ = {
+			isa = PBXGroup;
+			children = (
+				1FF0D3071E763C3900C5BB70 /* 01.PNG */,
+				1FF0D3081E763C3900C5BB70 /* 03.PNG */,
+				1FF0D3091E763C3900C5BB70 /* 02.PNG */,
+			);
+			name = GithubImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -411,8 +428,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FF0D30B1E763C3900C5BB70 /* 03.PNG in Resources */,
+				1FF0D30C1E763C3900C5BB70 /* 02.PNG in Resources */,
 				04667D561E51516E0061EA7E /* LaunchScreen.storyboard in Resources */,
 				04667D531E51516E0061EA7E /* Assets.xcassets in Resources */,
+				1FF0D30A1E763C3900C5BB70 /* 01.PNG in Resources */,
 				04667D511E51516E0061EA7E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
